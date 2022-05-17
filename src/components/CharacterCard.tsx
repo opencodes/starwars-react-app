@@ -18,9 +18,7 @@ const CharacterCard = ({ character, onFavouriteClick }: Props) => {
                 <h5 className="card-title">{character.name}</h5>
                 <div style={{ height: 50 }}>
                     <p > Gender : <span className="material-symbols-outlined">{character.gender !== 'n/a' ? character.gender : ''}</span></p>
-                    <p >Home Planet : {character.homeworld}
-
-                    </p>
+                    <p >Home Planet : {character.homeworld}</p>
                 </div>
             </div>
             <div className="card-body">

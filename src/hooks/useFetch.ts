@@ -45,5 +45,5 @@ export const useFetch = (method: HttpMethods, url: string, payload?: any) => {
     }
   }, [url]);
 
-  return { loading, error, data };
+  return { loading, error, data , retry: method === HttpMethods.GET ? httpGet : httpPost};
 };

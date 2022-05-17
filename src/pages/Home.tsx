@@ -12,25 +12,29 @@ import Paging from './components/Paging';
 
 const Home = () => {
     const { characters, setCharacters, setFilms, setPlanets, setStarships } = useAppContext();
-    const { data: people, loading: loadingPeople, error: peopleErr } = useFetch(
+    const { data: people, loading: loadingPeople, error: peopleErr, retry } = useFetch(
         HttpMethods.GET,
         END_POINT.people
     );
-    const { data: planets, loading: loadingPlanets, error: planetsErr } = useFetch(
-        HttpMethods.GET,
-        END_POINT.planets
-    );
+    // const { data: planets, loading: loadingPlanets, error: planetsErr } = useFetch(
+    //     HttpMethods.GET,
+    //     END_POINT.planets
+    // );
     // const { data: starships, loading: loadingStarships, error: starshipErr } = useFetch(
     //     HttpMethods.GET,
     //     END_POINT.starships
     // );
-    const { data: films, loading: loadingFilms, error: filmErr } = useFetch(
-        HttpMethods.GET,
-        END_POINT.films
-    );
+    // const { data: films, loading: loadingFilms, error: filmErr } = useFetch(
+    //     HttpMethods.GET,
+    //     END_POINT.films
+    // );
+
+    const goToPage = (url: string) => {
+        retry(url)
+    }
 
     useEffect(() => {
-        if (people && films && planets) {
+        if (people) {
             let characterResponse: ICharacterResponse = {
                 count: people.count,
                 next: people.next,
@@ -38,20 +42,20 @@ const Home = () => {
                 results: enhancedCharacterObject(people.results)
             };
             setCharacters(characterResponse)
-            setFilms(toObject(films.results))
-            setPlanets(toObject(planets.results))
+            // setFilms(toObject(films.results))
+            // setPlanets(toObject(planets.results))
             // setStarships(toObject(starships.results));
-            console.log();
+            // console.log();
 
         }
-    }, [people, films, planets])
+    }, [people])
 
     return (
         <>
             <Head />
-            <Paging />
+            <Paging goToPage={goToPage} />
             {characters && <CharacterList />}
-            <Paging />
+            <Paging goToPage={goToPage} />
         </>
     )
 
