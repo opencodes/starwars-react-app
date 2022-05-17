@@ -5,10 +5,11 @@ import { ICharacter } from '../interface/swapi.interface'
 
 type Props = {
     character: ICharacter,
-    onFavouriteClick: (character: ICharacter) => void
+    onFavouriteClick: (character: ICharacter) => void,
+    disableFav?: boolean
 }
 
-const CharacterCard = ({ character, onFavouriteClick }: Props) => {
+const CharacterCard = ({ character, onFavouriteClick, disableFav }: Props) => {
     const { planets } = useAppContext();
 
     return (
@@ -25,7 +26,7 @@ const CharacterCard = ({ character, onFavouriteClick }: Props) => {
                 <div className="d-flex justify-content-between">
                     <Link to={`/characters/${character.id}`} >
                         <button type="button" className="card-link btn btn-primary" >View </button></Link>
-                    <button type="button" className="card-link btn btn-warning" onClick={() => onFavouriteClick(character)} >
+                    <button type="button" className={`card-link btn btn-warning ${disableFav ? 'disabled' : ''}`} onClick={() => onFavouriteClick(character)} >
                         <span className="material-symbols-outlined">favorite</span>
                     </button>
                 </div>

@@ -5,6 +5,7 @@ import { ICharacter, ICharacterResponse } from './interface/swapi.interface';
 import { Route, Routes } from 'react-router-dom';
 import Details from './pages/Details';
 import Home from './pages/Home';
+import Favourite from './pages/Favourite';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} ></Route>
           <Route path="/characters/:id" element={<Details />}></Route>
+          <Route path="/favourite" element={<Favourite />}></Route>
         </Routes>
       </AppContext.Provider>
     </>

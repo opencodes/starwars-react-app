@@ -4,14 +4,9 @@ import { ICharacter } from '../interface/swapi.interface'
 type Props = {
     character: ICharacter,
 }
-
-// o list the films that the character has appeared in
-// o list the starships that the character has piloted
-// o provide the ability to add the character to the favourites list if they aren’t
-// already on it
 const CharacterProfile = ({ character }: Props) => {
     return (
-        <div className="card mb-3"  >
+        <div className="card mb-3 border-light"  >
             <div className="row g-0">
                 <div className="col-md-8">
                     <div className="card-body">
