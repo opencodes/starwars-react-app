@@ -2,6 +2,7 @@ import React from 'react';
 import { render, RenderResult, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
+import { mockCharacterResponse } from '../__mock__/mockCharacter';
 
 
 interface IUtilProps {
@@ -15,14 +16,12 @@ interface IUtilProps {
     renderOptions?: any;
     theme?: any;
 }
-const renderWithReduxAndRouter = (
+const renderWithRouter = (
     ui: React.ReactElement,
     options?: IUtilProps
 ): RenderResult => {
     const {
-        userState = {},
         renderOptions = {},
-        theme = {},
         route = {
             pathname: '/',
             search: '',
@@ -32,15 +31,15 @@ const renderWithReduxAndRouter = (
     } = options || {};
 
     let context = {
-        favouriteCharacters: [],
+        favouriteCharacters: mockCharacterResponse.results,
         setFavouriteCharacters: jest.fn(),
-        characters: [],
+        characters: mockCharacterResponse,
         setCharacters: jest.fn(),
-        films: [],
+        films: {},
         setFilms: jest.fn(),
-        planets: [],
+        planets: {},
         setPlanets: jest.fn(),
-        starships: [],
+        starships: {},
         setStarships: jest.fn(),
     }
     return render(
@@ -63,10 +62,10 @@ const TestUtilSampleComponent = ({ title }: Props): JSX.Element => {
 
 describe('TestUtilSampleComponent', () => {
     test('should render DashboardContent correctly', () => {
-        renderWithReduxAndRouter(<TestUtilSampleComponent title="Title" />);
+        renderWithRouter(<TestUtilSampleComponent title="Title" />);
         expect(screen.getAllByText('Title')).toHaveLength(1);
     });
 });
 
 export * from '@testing-library/react';
-export { renderWithReduxAndRouter };
+export { renderWithRouter };

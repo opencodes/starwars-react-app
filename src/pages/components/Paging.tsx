@@ -26,17 +26,22 @@ const Paging = ({ goToPage }: Props) => {
     return (
         <div className="container mt-3">
             <nav aria-label="Page navigation example">
-                <ul className="pagination justify-content-end">
-                    <li className={`page-item ${previousClass}`} >
-                        <button className="page-link" onClick={() => goToPage(characters?.previous || '')}>Previous</button>
+                <ul className="pagination justify-content-end" data-testid="paginglist">
+                    <li className={`page-item ${previousClass}`}>
+                        <button className="page-link"
+                            data-testid="previousBtn"
+                            onClick={() => goToPage(characters?.previous || '')}>Previous</button>
                     </li>
                     {
-                        pagingArr().map(p => (<li className="page-item" key={p.page}>
+                        pagingArr().map(p => (<li className="page-item" key={p.page} data-testid="pagingItem">
                             <button className="page-link" onClick={() => goToPage(p.url)}>{p.page}</button>
                         </li>))
                     }
-                    <li className={`page-item ${nextClass}`} >
-                        <button className="page-link" onClick={() => goToPage(characters?.next || '')} >Next</button>
+                    <li className={`page-item ${nextClass}`}
+                    >
+                        <button className="page-link"
+                            data-testid="nextBtn"
+                            onClick={() => goToPage(characters?.next || '')} >Next</button>
                     </li>
                 </ul>
             </nav>

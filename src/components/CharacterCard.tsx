@@ -1,6 +1,4 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
-import { useAppContext } from '../context/AppContext'
 import { ICharacter } from '../interface/swapi.interface'
 
 type Props = {
@@ -10,8 +8,6 @@ type Props = {
 }
 
 const CharacterCard = ({ character, onFavouriteClick, disableFav }: Props) => {
-    const { planets } = useAppContext();
-
     return (
         <div className="card"  >
             <img src={character.imgURL} className="card-img-top" alt="..." />
@@ -25,8 +21,12 @@ const CharacterCard = ({ character, onFavouriteClick, disableFav }: Props) => {
             <div className="card-body">
                 <div className="d-flex justify-content-between">
                     <Link to={`/characters/${character.id}`} >
-                        <button type="button" className="card-link btn btn-primary" >View </button></Link>
-                    <button type="button" className={`card-link btn btn-warning ${disableFav ? 'disabled' : ''}`} onClick={() => onFavouriteClick(character)} >
+                        <button type="button"
+                            className="card-link btn btn-primary" >View </button></Link>
+                    <button type="button"
+                        className={`card-link btn btn-warning ${disableFav ? 'disabled' : ''}`}
+                        data-testid='favorite-btn'
+                        onClick={() => onFavouriteClick(character)} >
                         <span className="material-symbols-outlined">favorite</span>
                     </button>
                 </div>

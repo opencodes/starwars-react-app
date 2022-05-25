@@ -2,7 +2,6 @@ import { useAppContext } from "../context/AppContext";
 import { ICharacter } from "../interface/swapi.interface";
 import CharacterCard from "./CharacterCard";
 
-
 const CharacterList = () => {
   const { characters, setFavouriteCharacters, favouriteCharacters } = useAppContext();
   let existingItems = favouriteCharacters.map(f => f.id);

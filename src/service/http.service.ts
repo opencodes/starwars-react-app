@@ -51,7 +51,7 @@ export const get = (url: any): Promise<HttpResponse> => {
         success: false,
         message: response.data.error,
         statusCode: response.status,
-        data: res.response.data,
+        data: response.data,
       };
     });
 };

@@ -31,6 +31,7 @@ export const enhancedCharacterObject = (results: any[]): ICharacter[] => {
     })
 }
 
+
 export const toObject = (results: any[]) => {
     let obj:{[key:string]:any} = {};
     results.forEach(r => {
