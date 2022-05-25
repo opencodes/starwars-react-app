@@ -22,7 +22,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "test:single": "npm run test -- src/App.test.tsx ",
-    "test:coverage": "npm run test -- --coverage --u ",
+    "test:coverage": "npm run test -- --coverage --u --watchAll",
     "test:coverageAll": "npm run test -- --coverage --watchAll"
   },
   "eslintConfig": {

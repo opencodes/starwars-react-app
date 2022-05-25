@@ -12,7 +12,6 @@ const CharacterList = () => {
     }
   }
   const isFavourite = (item: ICharacter) => existingItems.includes(item.id);
-
   return (
     <div className="container">
       <div className="d-flex flex-wrap">
@@ -27,7 +26,6 @@ const CharacterList = () => {
         )}
       </div>
     </div>
-
   )
 }
 
