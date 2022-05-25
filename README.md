@@ -8,6 +8,7 @@ In the project directory, you can run:
 
 ### `npm install`
 ### `npm start`
+### `test:coverage`
 
 ### Due to time constraints I am keeping a hard stop and putting my future enhancement guide
 ### Future Enhancement
