@@ -36,7 +36,6 @@ export const useFetch = (method: HttpMethods, url: string, payload?: any) => {
   useEffect(() => {
     if (!loading) {
       if (method === HttpMethods.GET) {
-        console.log(url);
         httpGet(url);
       }
       if (method === HttpMethods.POST && payload) {
